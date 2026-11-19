@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 
-import 'screens/home_screen.dart';
 import 'screens/welcome_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/products_overview_screen.dart';
+import 'screens/product_detail_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,17 +18,27 @@ class VentaAutosApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       title: 'CarsLot - Venta de Autos',
+
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.red,
         ),
       ),
+
       home: const WelcomeScreen(),
+
       routes: {
-        HomeScreen.routeName: (context) =>
-            const HomeScreen(),
+        HomeScreen.routeName:
+            (context) => const HomeScreen(),
+
+        ProductsOverviewScreen.routeName:
+            (context) => const ProductsOverviewScreen(),
+
+        ProductDetailScreen.routeName:
+            (context) => const ProductDetailScreen(),
       },
     );
   }
