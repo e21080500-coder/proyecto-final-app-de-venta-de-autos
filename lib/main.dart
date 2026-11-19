@@ -5,6 +5,7 @@ import 'screens/welcome_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/products_overview_screen.dart';
 import 'screens/product_detail_screen.dart';
+import 'screens/nosotros_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +40,8 @@ class VentaAutosApp extends StatelessWidget {
 
         ProductDetailScreen.routeName:
             (context) => const ProductDetailScreen(),
+
+            NosotrosScreen.routeName: (context) => const NosotrosScreen(),
       },
     );
   }

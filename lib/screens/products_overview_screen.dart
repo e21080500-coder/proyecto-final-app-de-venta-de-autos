@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../models/product.dart';
 import '../widgets/product_item.dart';
+import '../widgets/app_drawer.dart';
 
 // Opciones disponibles en el menú del catálogo.
 enum FilterOptions {
@@ -96,12 +97,35 @@ class _ProductsOverviewScreenState
     final products = displayedProducts;
 
     return Scaffold(
+
+      // ==========================================
+      // MENÚ LATERAL - SECCIÓN 5 DEL CURSO
+      // ==========================================
+      drawer: AppDrawer(),
+
+      // ==========================================
+      // BARRA SUPERIOR DEL CATÁLOGO
+      // ==========================================
       appBar: AppBar(
-        title: const Text('Products Overview'),
+        title: const Text('Catálogo de autos'),
+        centerTitle: true,
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
 
+        // Botón para abrir el menú lateral.
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu_rounded),
+            tooltip: 'Abrir menú',
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
+
+        // ==========================================
         // MENÚ DE FILTROS
+        // ==========================================
         actions: [
           PopupMenuButton<FilterOptions>(
             tooltip: 'Filtrar automóviles',
@@ -149,6 +173,10 @@ class _ProductsOverviewScreenState
           ),
         ],
       ),
+
+      // ==========================================
+      // CONTENIDO DEL CATÁLOGO
+      // ==========================================
 
       // Si no hay favoritos, mostramos un mensaje.
       body: products.isEmpty
@@ -206,7 +234,9 @@ class _ProductsOverviewScreenState
               ),
             )
 
-          // Si existen automóviles, mostramos el GridView.
+          // ==========================================
+          // GRID DE AUTOMÓVILES
+          // ==========================================
           : LayoutBuilder(
               builder: (context, constraints) {
                 final int columns =
